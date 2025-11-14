@@ -45,7 +45,10 @@ export default function GrapeGame({ onHome, onFinish }) {
     setGameTimeMs(0);
     gameStartRef.current = performance.now();
     setIsGameRunning(true);
-    try { localStorage.setItem("podo_last_grape_name", name); } catch {}
+    try { localStorage.setItem("podo_last_grape_name", name); } 
+    catch {
+      // empty
+      }
   };
 
   const selectArea = (idx) => {
@@ -70,7 +73,9 @@ export default function GrapeGame({ onHome, onFinish }) {
           const list = [...arr, { nickname: nickname.trim(), time: finalMs }]
             .sort((a, b) => a.time - b.time);
           localStorage.setItem("podo_grape_rankings", JSON.stringify(list));
-        } catch {}
+        } catch {
+          // empty
+          }
         onFinish?.();
       }
     }

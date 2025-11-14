@@ -124,7 +124,9 @@ export default function TicketingFlow({ onHome, onFinish }) {
         .sort((a, b) => a.time - b.time);
       localStorage.setItem("podo_ticket_rankings", JSON.stringify(list));
       localStorage.setItem("podo_last_ticket_name", buyerName.trim() || "익명");
-    } catch {}
+    } catch {
+      // empty
+      }
 
     if (typeof onFinish === "function") onFinish();
     else setStep(5);
